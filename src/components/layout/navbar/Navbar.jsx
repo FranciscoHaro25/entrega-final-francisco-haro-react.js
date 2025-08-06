@@ -6,7 +6,7 @@ export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-secondary text-black shadow-lg fixed top-0 left-0 right-0 z-[99999]">
+    <nav className="bg-white text-black shadow-lg fixed top-0 left-0 right-0 z-[99999] border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo - Link al home */}
@@ -18,7 +18,7 @@ export const Navbar = () => {
             <div className="group-hover:scale-110 transition-transform">
               <img src={logo} alt="Fran Store Logo" className="w-10 h-10" />
             </div>
-            {/* <span className="text-2xl font-bold text-white">Fran Store</span> */}
+            {/* <span className="text-2xl font-bold text-gray-900">Fran Store</span> */}
           </Link>
 
           {/* Menu Desktop */}
@@ -28,8 +28,8 @@ export const Navbar = () => {
               end
               className={({ isActive }) =>
                 isActive
-                  ? "text-orange-300 font-semibold border-b-2 border-orange-300 pb-1"
-                  : "text-white hover:text-orange-300 transition-colors"
+                  ? "text-primary font-semibold border-b-2 border-primary pb-1"
+                  : "text-gray-900 hover:text-primary transition-colors"
               }
             >
               Todos
@@ -39,8 +39,8 @@ export const Navbar = () => {
               to="/category/electronics"
               className={({ isActive }) =>
                 isActive
-                  ? "text-orange-300 font-semibold border-b-2 border-orange-300 pb-1"
-                  : "text-white hover:text-orange-300 transition-colors"
+                  ? "text-primary font-semibold border-b-2 border-primary pb-1"
+                  : "text-gray-900 hover:text-primary transition-colors"
               }
             >
               Electrónica
@@ -50,8 +50,8 @@ export const Navbar = () => {
               to="/category/deportes"
               className={({ isActive }) =>
                 isActive
-                  ? "text-orange-300 font-semibold border-b-2 border-orange-300 pb-1"
-                  : "text-white hover:text-orange-300 transition-colors"
+                  ? "text-primary font-semibold border-b-2 border-primary pb-1"
+                  : "text-gray-900 hover:text-primary transition-colors"
               }
             >
               Deportes
@@ -61,8 +61,8 @@ export const Navbar = () => {
               to="/category/clothing"
               className={({ isActive }) =>
                 isActive
-                  ? "text-orange-300 font-semibold border-b-2 border-orange-300 pb-1"
-                  : "text-white hover:text-orange-300 transition-colors"
+                  ? "text-primary font-semibold border-b-2 border-primary pb-1"
+                  : "text-gray-900 hover:text-primary transition-colors"
               }
             >
               Ropa
@@ -72,8 +72,8 @@ export const Navbar = () => {
               to="/category/books"
               className={({ isActive }) =>
                 isActive
-                  ? "text-orange-300 font-semibold border-b-2 border-orange-300 pb-1"
-                  : "text-white hover:text-orange-300 transition-colors"
+                  ? "text-primary font-semibold border-b-2 border-primary pb-1"
+                  : "text-gray-900 hover:text-primary transition-colors"
               }
             >
               Libros
@@ -85,7 +85,7 @@ export const Navbar = () => {
             {/* Carrito */}
             <Link to="/cart" className="relative group">
               <svg
-                className="w-6 h-6 group-hover:scale-110 transition-transform"
+                className="w-6 h-6 text-gray-900 group-hover:scale-110 transition-transform group-hover:text-primary"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -97,7 +97,7 @@ export const Navbar = () => {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              <span className="absolute -top-2 -right-2 bg-primary text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold animate-pulse">
+              <span className="absolute -top-2 -right-2 bg-yellow-500 text-black rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold animate-pulse">
                 3
               </span>
             </Link>
@@ -105,7 +105,7 @@ export const Navbar = () => {
             {/* Boton Menu Mobile */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden focus:outline-none"
+              className="md:hidden focus:outline-none text-gray-900 hover:text-primary"
             >
               <svg
                 className="w-6 h-6"
@@ -130,7 +130,7 @@ export const Navbar = () => {
 
         {/* Menu Mobile Desplegable */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-orange-300 space-y-1">
+          <div className="md:hidden py-4 border-t border-gray-200 space-y-1 bg-white">
             <NavLink
               to="/"
               end
@@ -138,8 +138,8 @@ export const Navbar = () => {
               className={({ isActive }) =>
                 `block py-2 px-4 rounded ${
                   isActive
-                    ? "bg-orange-500 text-white font-semibold"
-                    : "text-white hover:bg-blue-800"
+                    ? "bg-primary text-white font-semibold"
+                    : "text-gray-900 hover:bg-orange-50 hover:text-primary"
                 }`
               }
             >
@@ -151,8 +151,8 @@ export const Navbar = () => {
               className={({ isActive }) =>
                 `block py-2 px-4 rounded ${
                   isActive
-                    ? "bg-orange-500 text-white font-semibold"
-                    : "text-white hover:bg-blue-800"
+                    ? "bg-primary text-white font-semibold"
+                    : "text-gray-900 hover:bg-orange-50 hover:text-primary"
                 }`
               }
             >
@@ -164,8 +164,8 @@ export const Navbar = () => {
               className={({ isActive }) =>
                 `block py-2 px-4 rounded ${
                   isActive
-                    ? "bg-orange-500 text-white font-semibold"
-                    : "text-white hover:bg-blue-800"
+                    ? "bg-primary text-white font-semibold"
+                    : "text-gray-900 hover:bg-orange-50 hover:text-primary"
                 }`
               }
             >
@@ -177,8 +177,8 @@ export const Navbar = () => {
               className={({ isActive }) =>
                 `block py-2 px-4 rounded ${
                   isActive
-                    ? "bg-orange-500 text-white font-semibold"
-                    : "text-white hover:bg-blue-800"
+                    ? "bg-primary text-white font-semibold"
+                    : "text-gray-900 hover:bg-orange-50 hover:text-primary"
                 }`
               }
             >
@@ -190,8 +190,8 @@ export const Navbar = () => {
               className={({ isActive }) =>
                 `block py-2 px-4 rounded ${
                   isActive
-                    ? "bg-orange-500 text-white font-semibold"
-                    : "text-white hover:bg-blue-800"
+                    ? "bg-primary text-white font-semibold"
+                    : "text-gray-900 hover:bg-orange-50 hover:text-primary"
                 }`
               }
             >
