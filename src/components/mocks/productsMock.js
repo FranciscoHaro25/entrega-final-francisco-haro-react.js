@@ -7,7 +7,8 @@ const productsMock = [
       "El smartphone más avanzado de Apple con chip A17 Pro, cámara de 48MP y pantalla Super Retina XDR.",
     price: 1199.0,
     stock: 15,
-    image: "https://picsum.photos/400/300?random=1",
+    image:
+      "https://res.cloudinary.com/demo/image/upload/w_400,h_300,c_fill/sample",
     categories: ["electronics"],
   },
   {
@@ -17,7 +18,8 @@ const productsMock = [
       "Laptop profesional con chip M3, 16GB RAM y pantalla Liquid Retina de 14 pulgadas.",
     price: 1999.0,
     stock: 8,
-    image: "https://picsum.photos/400/300?random=2",
+    image:
+      "https://res.cloudinary.com/demo/image/upload/w_400,h_300,c_fill/cld-sample-2",
     categories: ["electronics"],
   },
   {
@@ -27,7 +29,8 @@ const productsMock = [
       "Auriculares inalámbricos con cancelación activa de ruido y audio espacial personalizado.",
     price: 249.0,
     stock: 25,
-    image: "https://picsum.photos/400/300?random=3",
+    image:
+      "https://res.cloudinary.com/demo/image/upload/w_400,h_300,c_fill/cld-sample-3",
     categories: ["electronics"],
   },
   {
