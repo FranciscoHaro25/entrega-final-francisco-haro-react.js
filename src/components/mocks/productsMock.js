@@ -8,7 +8,7 @@ const productsMock = [
     price: 1199.0,
     stock: 15,
     image:
-      "https://res.cloudinary.com/demo/image/upload/w_400,h_300,c_fill/sample",
+      "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=300&fit=crop&crop=center",
     categories: ["electronics"],
   },
   {
@@ -19,7 +19,7 @@ const productsMock = [
     price: 1999.0,
     stock: 8,
     image:
-      "https://res.cloudinary.com/demo/image/upload/w_400,h_300,c_fill/cld-sample-2",
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop&crop=center",
     categories: ["electronics"],
   },
   {
@@ -30,7 +30,7 @@ const productsMock = [
     price: 249.0,
     stock: 25,
     image:
-      "https://res.cloudinary.com/demo/image/upload/w_400,h_300,c_fill/cld-sample-3",
+      "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=400&h=300&fit=crop&crop=center",
     categories: ["electronics"],
   },
   {
@@ -40,7 +40,8 @@ const productsMock = [
       "Smart TV QLED de 55 pulgadas con resolución 4K, HDR10+ y sistema operativo Tizen.",
     price: 899.0,
     stock: 12,
-    image: "https://picsum.photos/400/300?random=4",
+    image:
+      "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=300&fit=crop&crop=center",
     categories: ["electronics"],
   },
 
@@ -52,7 +53,8 @@ const productsMock = [
       "Zapatillas deportivas con tecnología Air Max para máximo confort y amortiguación.",
     price: 149.0,
     stock: 30,
-    image: "https://picsum.photos/400/300?random=5",
+    image:
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop&crop=center",
     categories: ["deportes"],
   },
   {
@@ -62,7 +64,8 @@ const productsMock = [
       "Balón oficial de fútbol FIFA approved con diseño clásico y materiales de alta calidad.",
     price: 35.0,
     stock: 45,
-    image: "https://picsum.photos/400/300?random=6",
+    image:
+      "https://images.unsplash.com/photo-1614632537190-23e4b76f6e90?w=400&h=300&fit=crop&crop=center",
     categories: ["deportes"],
   },
   {
@@ -72,7 +75,8 @@ const productsMock = [
       "Bicicleta todo terreno con 21 velocidades, frenos de disco y suspensión delantera.",
     price: 599.0,
     stock: 6,
-    image: "https://picsum.photos/400/300?random=7",
+    image:
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&crop=center",
     categories: ["deportes"],
   },
   {
@@ -82,7 +86,8 @@ const productsMock = [
       "Juego de mancuernas ajustables de 5kg a 25kg cada una, perfectas para ejercicios en casa.",
     price: 129.0,
     stock: 20,
-    image: "https://picsum.photos/400/300?random=8",
+    image:
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center",
     categories: ["deportes"],
   },
 
@@ -94,7 +99,8 @@ const productsMock = [
       "Polo clásico de algodón 100% con bordado del logo icónico, disponible en varios colores.",
     price: 89.0,
     stock: 35,
-    image: "https://picsum.photos/400/300?random=9",
+    image:
+      "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&h=300&fit=crop&crop=center",
     categories: ["clothing"],
   },
   {
@@ -104,7 +110,8 @@ const productsMock = [
       "Jeans clásicos de corte recto, 100% algodón denim con el ajuste original icónico.",
     price: 119.0,
     stock: 40,
-    image: "https://picsum.photos/400/300?random=10",
+    image:
+      "https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=300&fit=crop&crop=center",
     categories: ["clothing"],
   },
   {
@@ -114,7 +121,8 @@ const productsMock = [
       "Campera deportiva con capucha, material transpirable y logo bordado Nike.",
     price: 79.0,
     stock: 18,
-    image: "https://picsum.photos/400/300?random=11",
+    image:
+      "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=300&fit=crop&crop=center",
     categories: ["clothing"],
   },
   {
@@ -124,7 +132,8 @@ const productsMock = [
       "Vestido de manga corta con estampado floral, perfecto para ocasiones casuales.",
     price: 59.0,
     stock: 25,
-    image: "https://picsum.photos/400/300?random=12",
+    image:
+      "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=300&fit=crop&crop=center",
     categories: ["clothing"],
   },
 
@@ -136,7 +145,8 @@ const productsMock = [
       "Guía esencial para dominar JavaScript escrita por Douglas Crockford, ideal para programadores.",
     price: 29.0,
     stock: 50,
-    image: "https://picsum.photos/400/300?random=13",
+    image:
+      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=300&fit=crop&crop=center",
     categories: ["books"],
   },
   {
@@ -146,7 +156,8 @@ const productsMock = [
       "Manual de artesanía del software ágil. Aprende a escribir código limpio y mantenible.",
     price: 39.0,
     stock: 30,
-    image: "https://picsum.photos/400/300?random=14",
+    image:
+      "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=300&fit=crop&crop=center",
     categories: ["books"],
   },
   {
@@ -156,7 +167,8 @@ const productsMock = [
       "Obra maestra de Miguel de Cervantes, edición especial con ilustraciones y análisis.",
     price: 24.0,
     stock: 40,
-    image: "https://picsum.photos/400/300?random=15",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=center",
     categories: ["books"],
   },
   {
@@ -166,7 +178,8 @@ const productsMock = [
       "Novela emblemática de Gabriel García Márquez, Premio Nobel de Literatura.",
     price: 19.0,
     stock: 35,
-    image: "https://picsum.photos/400/300?random=16",
+    image:
+      "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=300&fit=crop&crop=center",
     categories: ["books"],
   },
 ];
