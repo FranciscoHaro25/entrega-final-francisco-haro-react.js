@@ -37,6 +37,8 @@ const ItemListContainer = () => {
 
     getProducts
       .then((data) => {
+        console.log("Products loaded in ItemListContainer:", data.length);
+        console.log("First product image:", data[0]?.image);
         setProducts(data);
         setLoading(false);
       })
@@ -112,13 +114,11 @@ const ItemListContainer = () => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {products.map((product) => (
-              <Link
-                key={product.id}
-                to={`/item/${product.id}`}
-                className="block relative z-0"
-              >
-                <ProductCard product={product} />
-              </Link>
+              <div key={product.id} className="relative">
+                <Link to={`/item/${product.id}`} className="block group">
+                  <ProductCard product={product} />
+                </Link>
+              </div>
             ))}
           </div>
         )}

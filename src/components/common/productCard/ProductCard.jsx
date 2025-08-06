@@ -1,28 +1,32 @@
 export const ProductCard = ({ product }) => {
+  // URL alternativa más confiable
+  const fallbackImage = `https://via.placeholder.com/400x300/f3f4f6/9ca3af?text=${encodeURIComponent(
+    product.name.substring(0, 15)
+  )}`;
+
   return (
-    <div className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden h-full flex flex-col hover:-translate-y-1 relative z-10">
+    <div className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden h-full flex flex-col hover:-translate-y-1">
       {/* Imagen del producto */}
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden bg-gray-100">
         <img
           src={product.image}
           alt={product.name}
           className="w-full h-52 object-cover group-hover:scale-110 transition-transform duration-700"
+          loading="lazy"
           onError={(e) => {
-            console.log("Error loading image:", e.target.src);
-            e.target.src =
-              "https://via.placeholder.com/400x300?text=Imagen+no+disponible";
+            // Fallback a una imagen placeholder más confiable
+            e.target.src = fallbackImage;
           }}
         />
         <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
           {product.stock} disponibles
         </div>
         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
-      </div>
-
+      </div>{" "}
       {/* Contenido de la tarjeta */}
       <div className="p-5 flex-1 flex flex-col space-y-3">
         <h3
-          className="text-lg font-semibold text-gray-900 mb-1 leading-tight overflow-hidden"
+          className="text-lg font-semibold text-gray-900 mb-1 leading-tight ockrflow-hidden"
           style={{
             display: "-webkit-box",
             WebkitLineClamp: 2,
