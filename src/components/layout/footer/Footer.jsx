@@ -6,11 +6,9 @@ export const Footer = () => {
     <footer className="bg-gray-800 text-white mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Logo y descripción */}
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="flex items-center space-x-3 mb-4">
               <img src={logo} alt="MiTienda Logo" className="w-10 h-10" />
-              {/* <span className="text-xl font-bold text-white">MiTienda</span> */}
             </Link>
             <p className="text-brand-text-soft mb-4 max-w-md">
               Tu tienda online de confianza. Encuentra los mejores productos en
@@ -18,7 +16,6 @@ export const Footer = () => {
               precio.
             </p>
             <div className="flex space-x-4">
-              {/* Facebook */}
               <a
                 href="#"
                 className="text-brand-text-soft hover:text-primary transition-colors"

@@ -9,7 +9,6 @@ export const Navbar = () => {
     <nav className="bg-white text-black shadow-lg fixed top-0 left-0 right-0 z-[99999] border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo - Link al home */}
           <Link
             to="/"
             className="flex items-center space-x-3 group"
@@ -18,10 +17,8 @@ export const Navbar = () => {
             <div className="group-hover:scale-110 transition-transform">
               <img src={logo} alt="Fran Store Logo" className="w-10 h-10" />
             </div>
-            {/* <span className="text-2xl font-bold text-gray-900">Fran Store</span> */}
           </Link>
 
-          {/* Menu Desktop */}
           <div className="hidden md:flex items-center space-x-6">
             <NavLink
               to="/"
@@ -80,9 +77,7 @@ export const Navbar = () => {
             </NavLink>
           </div>
 
-          {/* CartWidget y Menu Mobile */}
           <div className="flex items-center space-x-4">
-            {/* Carrito */}
             <Link to="/cart" className="relative group">
               <svg
                 className="w-6 h-6 text-gray-900 group-hover:scale-110 transition-transform group-hover:text-primary"
@@ -102,7 +97,6 @@ export const Navbar = () => {
               </span>
             </Link>
 
-            {/* Boton Menu Mobile */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden focus:outline-none text-gray-900 hover:text-primary"
@@ -128,7 +122,6 @@ export const Navbar = () => {
           </div>
         </div>
 
-        {/* Menu Mobile Desplegable */}
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200 space-y-1 bg-white">
             <NavLink

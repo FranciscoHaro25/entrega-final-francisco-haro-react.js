@@ -11,7 +11,6 @@ const ItemDetailContainer = () => {
   useEffect(() => {
     setLoading(true);
 
-    // Simulamos petición asíncrona
     const getProduct = new Promise((resolve, reject) => {
       setTimeout(() => {
         const foundProduct = productsMock.find((p) => p.id === parseInt(id));

@@ -11,16 +11,12 @@ const App = () => {
         <Navbar />
         <main className="flex-1 pt-16">
           <Routes>
-            {/* Ruta principal - todos los productos */}
-            <Route path="/" element={<ItemListContainer />} />{" "}
-            {/* Ruta de categorías dinámicas */}
+            <Route path="/" element={<ItemListContainer />} />
             <Route
               path="/category/:categoryId"
               element={<ItemListContainer />}
             />
-            {/* Ruta de detalle de producto */}
             <Route path="/item/:id" element={<ItemDetailContainer />} />
-            {/* Ruta del carrito */}
             <Route
               path="/cart"
               element={
@@ -36,7 +32,6 @@ const App = () => {
                 </div>
               }
             />
-            {/* Ruta 404 - cualquier otra ruta no definida */}
             <Route
               path="*"
               element={

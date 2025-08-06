@@ -8,7 +8,6 @@ const ItemListContainer = () => {
   const [loading, setLoading] = useState(true);
   const { categoryId } = useParams();
 
-  // Mapeo de categorías para mostrar nombres en español
   const categoryNames = {
     electronics: "Electrónica",
     deportes: "Deportes",
@@ -19,7 +18,6 @@ const ItemListContainer = () => {
   useEffect(() => {
     setLoading(true);
 
-    // Simulamos petición asíncrona con Promise
     const getProducts = new Promise((resolve) => {
       setTimeout(() => {
         if (categoryId) {
@@ -37,8 +35,6 @@ const ItemListContainer = () => {
 
     getProducts
       .then((data) => {
-        console.log("Products loaded in ItemListContainer:", data.length);
-        console.log("First product image:", data[0]?.image);
         setProducts(data);
         setLoading(false);
       })
@@ -62,7 +58,6 @@ const ItemListContainer = () => {
   return (
     <div className="bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Título dinámico según categoría */}
         <h1 className="text-4xl font-bold text-center text-gray-900 mb-2">
           {categoryId ? (
             <>
@@ -76,7 +71,6 @@ const ItemListContainer = () => {
           )}
         </h1>
 
-        {/* Contador de productos encontrados */}
         <p className="text-center text-gray-600 mb-8">
           {products.length === 0
             ? "No hay productos disponibles"
@@ -85,7 +79,6 @@ const ItemListContainer = () => {
               } disponible${products.length === 1 ? "" : "s"}`}
         </p>
 
-        {/* Grid de productos o mensaje vacío */}
         {products.length === 0 ? (
           <div className="text-center py-12">
             <svg

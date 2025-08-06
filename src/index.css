@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Variables CSS de marca */
 :root {
   --color-primary: #f7931e;
   --color-secondary: #1f3a93;
@@ -8,12 +7,10 @@
   --color-text-soft: #828282;
 }
 
-/* Configuración global de texto */
 body {
   color: var(--color-text-main);
 }
 
-/* Utilidades adicionales para clamp */
 @layer utilities {
   .line-clamp-2 {
     display: -webkit-box;
