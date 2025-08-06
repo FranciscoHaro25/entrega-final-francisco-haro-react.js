@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import logo from "../../../assets/image/logo-2.svg";
 
 export const Footer = () => {
   return (
@@ -7,7 +8,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="flex items-center space-x-3 mb-4">
-              <img src="/logo.svg" alt="MiTienda Logo" className="w-10 h-10" />
+              <img src={logo} alt="MiTienda Logo" className="w-10 h-10" />
             </Link>
             <p className="text-brand-text-soft mb-4 max-w-md">
               Tu tienda online de confianza. Encuentra los mejores productos en

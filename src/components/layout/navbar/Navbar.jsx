@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router";
 import { useState } from "react";
+import logo from "../../../assets/image/logo-2.svg";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,11 +15,7 @@ export const Navbar = () => {
             onClick={() => setIsMenuOpen(false)}
           >
             <div className="group-hover:scale-110 transition-transform">
-              <img
-                src="/logo.svg"
-                alt="Fran Store Logo"
-                className="w-10 h-10"
-              />
+              <img src={logo} alt="Fran Store Logo" className="w-20 h-20" />
             </div>
           </Link>
 
