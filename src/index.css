@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+/* Variables CSS de marca */
+:root {
+  --color-primary: #f7931e;
+  --color-secondary: #1f3a93;
+  --color-text-main: #2e2e2e;
+  --color-text-soft: #828282;
+}
+
+/* Configuración global de texto */
+body {
+  color: var(--color-text-main);
+}

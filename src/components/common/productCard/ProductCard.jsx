@@ -1,48 +1,73 @@
 export const ProductCard = ({ product }) => {
   return (
-    <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 overflow-hidden h-full flex flex-col">
+    <div className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden h-full flex flex-col hover:-translate-y-1 relative z-10">
       {/* Imagen del producto */}
-      <div className="relative">
+      <div className="relative overflow-hidden">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-48 object-cover"
+          className="w-full h-52 object-cover group-hover:scale-110 transition-transform duration-700"
+          onError={(e) => {
+            console.log("Error loading image:", e.target.src);
+            e.target.src =
+              "https://via.placeholder.com/400x300?text=Imagen+no+disponible";
+          }}
         />
-        <div className="absolute top-3 right-3 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-          Stock: {product.stock}
+        <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
+          {product.stock} disponibles
         </div>
+        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
       </div>
 
       {/* Contenido de la tarjeta */}
-      <div className="p-6 flex-1 flex flex-col">
-        <h3 className="text-xl font-bold text-gray-800 mb-2 line-clamp-2">
+      <div className="p-5 flex-1 flex flex-col space-y-3">
+        <h3
+          className="text-lg font-semibold text-gray-900 mb-1 leading-tight overflow-hidden"
+          style={{
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+          }}
+        >
           {product.name}
         </h3>
 
-        <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-1">
+        <p
+          className="text-gray-600 text-sm mb-3 flex-1 leading-relaxed overflow-hidden"
+          style={{
+            display: "-webkit-box",
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: "vertical",
+          }}
+        >
           {product.description}
         </p>
 
         {/* Categorías */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {product.categories?.map((category, index) => (
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          {product.categories?.slice(0, 2).map((category, index) => (
             <span
               key={index}
-              className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium"
+              className="bg-orange-50 text-orange-700 px-2.5 py-1 rounded-md text-xs font-medium border border-orange-200"
             >
               {category}
             </span>
           ))}
+          {product.categories?.length > 2 && (
+            <span className="text-gray-500 text-xs px-1 py-1">
+              +{product.categories.length - 2}
+            </span>
+          )}
         </div>
 
         {/* Precio y botón */}
-        <div className="flex items-center justify-between mt-auto">
-          <div className="text-2xl font-bold text-green-600">
-            ${product.price}
+        <div className="flex items-center justify-between mt-auto pt-2">
+          <div className="text-xl font-bold text-orange-600">
+            ${product.price.toFixed(2)}
           </div>
 
-          <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95">
-            Añadir
+          <button className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2.5 px-5 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl">
+            Agregar
           </button>
         </div>
       </div>

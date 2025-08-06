@@ -1,27 +1,71 @@
-import Elemento from "./components/Elemento";
-import Elemento2 from "./components/Elemento2";
+import { BrowserRouter, Routes, Route, Link } from "react-router";
+import { Navbar } from "./components/layout/navbar/Navbar";
+import { Footer } from "./components/layout/footer/Footer";
 import ItemListContainer from "./components/page/itemListContainer/ItemListContainer";
-// import logo from "./assets/image/logo.png";
+import ItemDetailContainer from "./components/page/itemDetailContainer/ItemDetailContainer";
 
 const App = () => {
   return (
-    <div>
-      <div className="bg-red-500 text-white p-4 text-center">
-        <h1>¡Tailwind funciona!</h1>
+    <BrowserRouter>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-1 pt-16">
+          <Routes>
+            {/* Ruta principal - todos los productos */}
+            <Route path="/" element={<ItemListContainer />} />
+
+            {/* Ruta de categorías dinámicas */}
+            <Route
+              path="/category/:categoryId"
+              element={<ItemListContainer />}
+            />
+
+            {/* Ruta de detalle de producto */}
+            <Route path="/item/:id" element={<ItemDetailContainer />} />
+
+            {/* Ruta del carrito */}
+            <Route
+              path="/cart"
+              element={
+                <div className="bg-gray-50 flex items-center justify-center pt-6 pb-20">
+                  <div className="text-center">
+                    <h2 className="text-2xl text-gray-600 mb-4">
+                      Carrito - Próximamente
+                    </h2>
+                    <p className="text-gray-500">
+                      Esta funcionalidad estará disponible pronto
+                    </p>
+                  </div>
+                </div>
+              }
+            />
+
+            {/* Ruta 404 - cualquier otra ruta no definida */}
+            <Route
+              path="*"
+              element={
+                <div className="bg-gray-50 flex flex-col items-center justify-center pt-6 pb-20">
+                  <h1 className="text-9xl font-bold text-gray-300">404</h1>
+                  <h2 className="text-3xl font-bold text-gray-800 mt-4 mb-2">
+                    Página no encontrada
+                  </h2>
+                  <p className="text-gray-600 mb-6">
+                    Lo sentimos, la página que buscas no existe
+                  </p>
+                  <Link
+                    to="/"
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all"
+                  >
+                    Volver al inicio
+                  </Link>
+                </div>
+              }
+            />
+          </Routes>
+        </main>
+        <Footer />
       </div>
-      {/* <Elemento2 /> */}
-      {/* <img src={logo} alt="Logo" />
-      <img
-        src="https://e7.pngegg.com/pngimages/377/34/png-clipart-runes-logo-black.png"
-        alt=""
-      />
-      <img
-        src="https://res.cloudinary.com/dgvwjlnns/image/upload/v1752877946/diseno-logotipo-degradado-colorido-letra_474888-2309_entk8x.jpg"
-        alt=""
-      /> */}
-      {/* <Elemento /> */}
-      <ItemListContainer />
-    </div>
+    </BrowserRouter>
   );
 };
 
