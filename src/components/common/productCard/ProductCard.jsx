@@ -18,7 +18,7 @@ export const ProductCard = ({ product }) => {
         <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
           {product.stock} disponibles
         </div>
-        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
+        <div className="absolute inset-0  bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
       </div>
 
       <div className="p-5 flex-1 flex flex-col space-y-3">
