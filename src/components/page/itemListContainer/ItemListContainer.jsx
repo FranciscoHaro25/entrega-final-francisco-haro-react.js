@@ -13,6 +13,7 @@ const ItemListContainer = () => {
     deportes: "Deportes",
     clothing: "Ropa",
     books: "Libros",
+    toys: "Juguetes",
   };
 
   useEffect(() => {
@@ -97,21 +98,17 @@ const ItemListContainer = () => {
             <p className="text-xl text-gray-600 mb-4">
               No encontramos productos en esta categoría
             </p>
-            <Link
+            {/* <Link
               to="/"
               className="inline-block bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-all"
             >
               Ver todos los productos
-            </Link>
+            </Link> */}
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {products.map((product) => (
-              <div key={product.id} className="relative">
-                <Link to={`/item/${product.id}`} className="block group">
-                  <ProductCard product={product} />
-                </Link>
-              </div>
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         )}

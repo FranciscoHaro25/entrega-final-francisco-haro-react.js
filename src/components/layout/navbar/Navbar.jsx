@@ -75,6 +75,17 @@ export const Navbar = () => {
             >
               Libros
             </NavLink>
+
+            <NavLink
+              to="/category/toys"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-primary font-semibold border-b-2 border-primary pb-1"
+                  : "text-gray-900 hover:text-primary transition-colors"
+              }
+            >
+              Juguetes
+            </NavLink>
           </div>
 
           <div className="flex items-center space-x-4">

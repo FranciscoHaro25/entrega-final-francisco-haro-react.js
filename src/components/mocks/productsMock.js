@@ -182,6 +182,96 @@ const productsMock = [
       "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=300&fit=crop&crop=center",
     categories: ["books"],
   },
+
+  // JUGUETES
+  {
+    id: 17,
+    name: "LEGO Creator 3 en 1",
+    description:
+      "Set de construcción LEGO con 3 modelos diferentes en 1. Incluye 500 piezas para construir un dinosaurio, avión o barco.",
+    price: 45.0,
+    stock: 22,
+    image:
+      "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=400&h=300&fit=crop&crop=center",
+    categories: ["toys"],
+  },
+  {
+    id: 18,
+    name: "Muñeca Barbie Fashionista",
+    description:
+      "Muñeca Barbie con ropa intercambiable y accesorios de moda. Incluye 3 atuendos diferentes y zapatos.",
+    price: 32.0,
+    stock: 28,
+    image:
+      "https://images.unsplash.com/photo-1609311375732-e0536070ccc5?w=400&h=300&fit=crop&crop=center",
+    categories: ["toys"],
+  },
+  {
+    id: 19,
+    name: "Hot Wheels Pack 10 Autos",
+    description:
+      "Colección de 10 autos Hot Wheels con diseños exclusivos y ruedas que giran. Escala 1:64.",
+    price: 25.0,
+    stock: 40,
+    image:
+      "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=400&h=300&fit=crop&crop=center",
+    categories: ["toys"],
+  },
+  {
+    id: 20,
+    name: "Puzzle 1000 Piezas - Paisajes",
+    description:
+      "Rompecabezas de 1000 piezas con hermosos paisajes naturales. Medidas finales 70x50cm.",
+    price: 18.0,
+    stock: 15,
+    image:
+      "https://images.unsplash.com/photo-1606041974734-0341c2d2d988?w=400&h=300&fit=crop&crop=center",
+    categories: ["toys"],
+  },
+  {
+    id: 21,
+    name: "Nerf Elite 2.0 Commander",
+    description:
+      "Lanzador Nerf con capacidad para 6 dardos. Incluye 12 dardos de espuma oficiales Nerf Elite.",
+    price: 38.0,
+    stock: 18,
+    image:
+      "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&h=300&fit=crop&crop=center",
+    categories: ["toys"],
+  },
+  {
+    id: 22,
+    name: "Peluche Pokémon Pikachu 30cm",
+    description:
+      "Peluche oficial de Pikachu de alta calidad, 30cm de altura. Material suave y detalles bordados.",
+    price: 28.0,
+    stock: 33,
+    image:
+      "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?w=400&h=300&fit=crop&crop=center",
+    categories: ["toys"],
+  },
+  {
+    id: 23,
+    name: "Playmobil Ciudad - Estación de Bomberos",
+    description:
+      "Set Playmobil con estación de bomberos, camión, 4 figuras y accesorios. Luces y sonidos incluidos.",
+    price: 65.0,
+    stock: 10,
+    image:
+      "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=400&h=300&fit=crop&crop=center",
+    categories: ["toys"],
+  },
+  {
+    id: 24,
+    name: "Juego de Mesa Monopoly Clásico",
+    description:
+      "El clásico juego de bienes raíces Monopoly. Para 2-8 jugadores, incluye tablero, fichas y billetes.",
+    price: 42.0,
+    stock: 20,
+    image:
+      "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=400&h=300&fit=crop&crop=center",
+    categories: ["toys"],
+  },
 ];
 
 export default productsMock;
