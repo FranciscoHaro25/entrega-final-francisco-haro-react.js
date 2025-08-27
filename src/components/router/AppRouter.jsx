@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router";
 import { Navbar } from "../layout/navbar/Navbar";
 import { Footer } from "../layout/footer/Footer";
-import ItemListContainer from "../page/itemListContainer/ItemListContainer";
-import ItemDetailContainer from "../page/itemDetailContainer/ItemDetailContainer";
+import ItemListContainer from "../../page/itemListContainer/ItemListContainer";
+import ItemDetailContainer from "../../page/itemDetailContainer/ItemDetailContainer";
+import { Cart } from "../../page/cart/Cart";
 
 const AppRouter = () => {
   return (
@@ -17,21 +18,7 @@ const AppRouter = () => {
               element={<ItemListContainer />}
             />
             <Route path="/item/:id" element={<ItemDetailContainer />} />
-            <Route
-              path="/cart"
-              element={
-                <div className="bg-gray-50 flex items-center justify-center pt-6 pb-20">
-                  <div className="text-center">
-                    <h2 className="text-2xl text-gray-600 mb-4">
-                      Carrito - Próximamente
-                    </h2>
-                    <p className="text-gray-500">
-                      Esta funcionalidad estará disponible pronto
-                    </p>
-                  </div>
-                </div>
-              }
-            />
+            <Route path="/cart" element={<Cart />} />
             <Route
               path="*"
               element={

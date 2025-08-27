@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router";
-import productsMock from "../../mocks/productsMock";
+import productsMock from "../../components/mocks/productsMock";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router";
-import productsMock from "../../mocks/productsMock";
-import { ProductCard } from "../../common/productCard/ProductCard";
+import productsMock from "../../components/mocks/productsMock";
+import { ProductCard } from "../../components/common/productCard/ProductCard";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);

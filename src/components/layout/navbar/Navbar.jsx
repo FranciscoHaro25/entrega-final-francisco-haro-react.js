@@ -132,7 +132,7 @@ export const Navbar = () => {
             </button>
           </div>
         </div>
-
+        {/* 
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200 space-y-1 bg-white">
             <NavLink
@@ -202,7 +202,7 @@ export const Navbar = () => {
               Libros
             </NavLink>
           </div>
-        )}
+        )} */}
       </div>
     </nav>
   );
