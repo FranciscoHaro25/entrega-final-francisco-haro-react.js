@@ -2,6 +2,7 @@ import { useCart } from "../../context/CartContext";
 import {
   ButtonLink,
   ButtonPrimary,
+  ButtonDanger,
   ButtonIcon,
 } from "../../components/common/buttons/index";
 
@@ -14,6 +15,26 @@ export const Cart = () => {
     getTotalItems,
     clearCart,
   } = useCart();
+
+  // Manejar confirmación antes de vaciar carrito
+  const handleClearCart = () => {
+    if (window.confirm("¿Estás seguro de que quieres vaciar el carrito?")) {
+      clearCart();
+    }
+  };
+
+  // Manejar cambio de cantidad
+  const handleQuantityChange = (itemId, newQuantity) => {
+    if (newQuantity < 1) return; // No permitir cantidades menores a 1
+    updateQuantity(itemId, newQuantity);
+  };
+
+  // Manejar eliminación de producto
+  const handleRemoveItem = (itemId, itemName) => {
+    if (window.confirm(`¿Quieres eliminar "${itemName}" del carrito?`)) {
+      removeItem(itemId);
+    }
+  };
 
   if (cartItems.length === 0) {
     return (
@@ -88,9 +109,12 @@ export const Cart = () => {
                   {/* Controles de cantidad */}
                   <div className="flex items-center space-x-3">
                     <ButtonIcon
-                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                      onClick={() =>
+                        handleQuantityChange(item.id, item.quantity - 1)
+                      }
                       variant="secondary"
                       size="sm"
+                      disabled={item.quantity <= 1}
                     >
                       -
                     </ButtonIcon>
@@ -98,7 +122,9 @@ export const Cart = () => {
                       {item.quantity}
                     </span>
                     <ButtonIcon
-                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                      onClick={() =>
+                        handleQuantityChange(item.id, item.quantity + 1)
+                      }
                       variant="primary"
                       size="sm"
                     >
@@ -108,7 +134,7 @@ export const Cart = () => {
 
                   {/* Botón eliminar */}
                   <ButtonIcon
-                    onClick={() => removeItem(item.id)}
+                    onClick={() => handleRemoveItem(item.id, item.name)}
                     variant="danger"
                     size="md"
                     className="text-red-500 hover:text-red-700"
@@ -179,13 +205,13 @@ export const Cart = () => {
                 Seguir comprando
               </ButtonLink>
 
-              <ButtonPrimary
-                onClick={clearCart}
+              <ButtonDanger
+                onClick={handleClearCart}
                 size="sm"
-                className="w-full bg-red-500 hover:bg-red-600"
+                className="w-full"
               >
                 Vaciar carrito
-              </ButtonPrimary>
+              </ButtonDanger>
             </div>
           </div>
         </div>

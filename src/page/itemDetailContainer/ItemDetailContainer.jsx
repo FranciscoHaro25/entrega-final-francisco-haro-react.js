@@ -56,21 +56,28 @@ const ItemDetailContainer = () => {
   };
 
   const onAdd = () => {
-    console.log(
-      `Se agregaron ${quantity} unidades de ${product.name} al carrito`
-    );
+    // Validar stock disponible
+    if (quantity > product.stock) {
+      alert("No hay suficiente stock disponible");
+      return;
+    }
 
-    // Agregar al carrito usando el contexto
-    addToCart(product, quantity);
+    try {
+      // Agregar al carrito usando el contexto
+      addToCart(product, quantity);
 
-    // Mostrar estado de "agregando"
-    setIsAdding(true);
+      // Mostrar estado de "agregando" para UX
+      setIsAdding(true);
 
-    // Simular un pequeño delay para mostrar feedback
-    setTimeout(() => {
-      // Navegar al carrito después de agregar el producto
-      navigate("/cart");
-    }, 1000);
+      // Breve delay para mostrar feedback visual
+      setTimeout(() => {
+        navigate("/cart");
+      }, 1000);
+    } catch (error) {
+      console.error("Error al agregar producto:", error);
+      alert("Hubo un problema al agregar el producto al carrito");
+      setIsAdding(false);
+    }
   };
 
   if (loading) {

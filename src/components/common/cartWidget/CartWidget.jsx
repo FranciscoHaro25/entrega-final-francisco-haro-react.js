@@ -3,14 +3,12 @@ import { useCart } from "../../../context/CartContext";
 
 export const CartWidget = () => {
   const { getTotalItems } = useCart();
-
   const totalItems = getTotalItems();
-  console.log("CartWidget renderizado - Total items:", totalItems);
 
   return (
     <Link to="/cart" className="relative group">
       <svg
-        className="w-6 h-6 text-gray-900 group-hover:scale-110 transition-transform group-hover:text-primary"
+        className="w-6 h-6 text-brand-text-main group-hover:scale-110 transition-transform group-hover:text-primary"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -24,7 +22,7 @@ export const CartWidget = () => {
       </svg>
       {/* Mostrar contador solo si hay items */}
       {totalItems > 0 && (
-        <span className="absolute -top-2 -right-2 bg-yellow-500 text-black rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold animate-pulse">
+        <span className="absolute -top-2 -right-2 bg-orange-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold animate-pulse shadow-lg border-2 border-white">
           {totalItems}
         </span>
       )}

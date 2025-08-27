@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 const CartContext = createContext();
 
+// Hook personalizado para usar el contexto del carrito
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {
@@ -11,43 +12,32 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: "iPhone 15 Pro",
-      price: 1200000,
-      quantity: 1,
-      image:
-        "https://res.cloudinary.com/dqeideoyd/image/upload/v1733702862/iphone-15-pro_hkqzpn.jpg",
-    },
-    {
-      id: 2,
-      name: "Nike Air Jordan",
-      price: 180000,
-      quantity: 2,
-      image:
-        "https://res.cloudinary.com/dqeideoyd/image/upload/v1733702863/nike-air-jordan_abc123.jpg",
-    },
-  ]);
+  const [cartItems, setCartItems] = useState([]);
 
+  // Agregar producto al carrito
   const addToCart = (product, quantity = 1) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((item) => item.id === product.id);
+
       if (existingItem) {
+        // Si el producto ya existe, actualizar cantidad
         return prevItems.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + quantity }
             : item
         );
       } else {
+        // Si es nuevo, agregarlo al carrito
         return [...prevItems, { ...product, quantity }];
       }
     });
   };
 
+  // Actualizar cantidad de un producto
   const updateQuantity = (id, newQuantity) => {
     if (newQuantity <= 0) {
-      setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+      // Si la cantidad es 0 o menor, eliminar el producto
+      removeItem(id);
     } else {
       setCartItems((prevItems) =>
         prevItems.map((item) =>
@@ -57,10 +47,12 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  // Eliminar producto del carrito
   const removeItem = (id) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
+  // Calcular precio total
   const getTotalPrice = () => {
     return cartItems.reduce(
       (total, item) => total + item.price * item.quantity,
@@ -68,12 +60,19 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  // Calcular cantidad total de productos
   const getTotalItems = () => {
     return cartItems.reduce((total, item) => total + item.quantity, 0);
   };
 
+  // Vaciar carrito completo
   const clearCart = () => {
     setCartItems([]);
+  };
+
+  // Verificar si un producto está en el carrito
+  const isInCart = (productId) => {
+    return cartItems.some((item) => item.id === productId);
   };
 
   const value = {
@@ -84,6 +83,7 @@ export const CartProvider = ({ children }) => {
     getTotalPrice,
     getTotalItems,
     clearCart,
+    isInCart,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
