@@ -1,53 +1,18 @@
-import { Link } from "react-router";
-import { useState } from "react";
+import { useCart } from "../../context/CartContext";
+import {
+  ButtonLink,
+  ButtonPrimary,
+  ButtonIcon,
+} from "../../components/common/buttons/index";
 
 export const Cart = () => {
-  // Mock de productos en el carrito
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: "iPhone 15 Pro",
-      price: 1200000,
-      quantity: 1,
-      image:
-        "https://res.cloudinary.com/dqeideoyd/image/upload/v1733702862/iphone-15-pro_hkqzpn.jpg",
-    },
-    {
-      id: 2,
-      name: "Nike Air Jordan",
-      price: 180000,
-      quantity: 2,
-      image:
-        "https://res.cloudinary.com/dqeideoyd/image/upload/v1733702863/nike-air-jordan_abc123.jpg",
-    },
-  ]);
-
-  const updateQuantity = (id, newQuantity) => {
-    if (newQuantity <= 0) {
-      setCartItems(cartItems.filter((item) => item.id !== id));
-    } else {
-      setCartItems(
-        cartItems.map((item) =>
-          item.id === id ? { ...item, quantity: newQuantity } : item
-        )
-      );
-    }
-  };
-
-  const removeItem = (id) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
-  };
-
-  const getTotalPrice = () => {
-    return cartItems.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
-  };
-
-  const getTotalItems = () => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0);
-  };
+  const {
+    cartItems,
+    updateQuantity,
+    removeItem,
+    getTotalPrice,
+    getTotalItems,
+  } = useCart();
 
   if (cartItems.length === 0) {
     return (
@@ -73,12 +38,9 @@ export const Cart = () => {
             <p className="text-gray-600 mb-8">
               ¡Agrega algunos productos increíbles!
             </p>
-            <Link
-              to="/"
-              className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105 inline-block font-semibold"
-            >
+            <ButtonLink to="/" variant="primary" size="lg" className="block">
               Seguir comprando
-            </Link>
+            </ButtonLink>
           </div>
         </div>
       </div>
@@ -124,28 +86,31 @@ export const Cart = () => {
 
                   {/* Controles de cantidad */}
                   <div className="flex items-center space-x-3">
-                    <button
+                    <ButtonIcon
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition-colors"
+                      variant="secondary"
+                      size="sm"
                     >
                       -
-                    </button>
+                    </ButtonIcon>
                     <span className="w-8 text-center font-semibold">
                       {item.quantity}
                     </span>
-                    <button
+                    <ButtonIcon
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      className="w-8 h-8 rounded-full bg-blue-500 hover:bg-blue-600 text-white flex items-center justify-center transition-colors"
+                      variant="primary"
+                      size="sm"
                     >
                       +
-                    </button>
+                    </ButtonIcon>
                   </div>
 
                   {/* Botón eliminar */}
-                  <button
+                  <ButtonIcon
                     onClick={() => removeItem(item.id)}
-                    className="text-red-500 hover:text-red-700 p-2 transition-colors"
-                    title="Eliminar producto"
+                    variant="danger"
+                    size="md"
+                    className="text-red-500 hover:text-red-700"
                   >
                     <svg
                       className="w-5 h-5"
@@ -160,7 +125,7 @@ export const Cart = () => {
                         d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                       />
                     </svg>
-                  </button>
+                  </ButtonIcon>
                 </div>
 
                 {/* Subtotal del producto */}
@@ -200,16 +165,18 @@ export const Cart = () => {
                 </div>
               </div>
 
-              <button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105 font-semibold text-lg mb-4">
+              <ButtonPrimary size="lg" className="w-full mb-4">
                 Proceder al pago
-              </button>
+              </ButtonPrimary>
 
-              <Link
+              <ButtonLink
                 to="/"
-                className="block w-full text-center text-primary hover:text-primary-dark font-semibold py-2 transition-colors"
+                variant="secondary"
+                size="md"
+                className="block w-full text-center"
               >
                 Seguir comprando
-              </Link>
+              </ButtonLink>
             </div>
           </div>
         </div>

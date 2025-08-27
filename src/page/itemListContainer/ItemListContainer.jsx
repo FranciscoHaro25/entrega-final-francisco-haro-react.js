@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router";
+import { useParams } from "react-router";
 import productsMock from "../../components/mocks/productsMock";
 import { ProductCard } from "../../components/common/productCard/ProductCard";
+import { ButtonLink } from "../../components/common/buttons/index";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
@@ -98,12 +99,9 @@ const ItemListContainer = () => {
             <p className="text-xl text-gray-600 mb-4">
               No encontramos productos en esta categoría
             </p>
-            {/* <Link
-              to="/"
-              className="inline-block bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-all"
-            >
+            <ButtonLink to="/" variant="primary" size="md">
               Ver todos los productos
-            </Link> */}
+            </ButtonLink>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

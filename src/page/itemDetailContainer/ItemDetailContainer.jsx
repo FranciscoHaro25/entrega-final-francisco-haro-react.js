@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router";
 import productsMock from "../../components/mocks/productsMock";
+import {
+  ButtonPrimary,
+  ButtonSecondary,
+  ButtonLink,
+} from "../../components/common/buttons";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
@@ -69,12 +74,9 @@ const ItemDetailContainer = () => {
         <h2 className="text-3xl font-bold text-gray-900 mb-4">
           Producto no encontrado
         </h2>
-        <Link
-          to="/"
-          className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-all"
-        >
+        <ButtonLink to="/" variant="primary">
           Volver al catálogo
-        </Link>
+        </ButtonLink>
       </div>
     );
   }
@@ -132,13 +134,14 @@ const ItemDetailContainer = () => {
               {/* Categorías */}
               <div className="flex flex-wrap gap-2 mb-6">
                 {product.categories?.map((category, index) => (
-                  <Link
+                  <ButtonLink
                     key={index}
                     to={`/category/${category.toLowerCase()}`}
-                    className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-orange-200 transition-colors"
+                    variant="orange"
+                    size="sm"
                   >
                     {category}
-                  </Link>
+                  </ButtonLink>
                 ))}
               </div>
 
@@ -162,34 +165,35 @@ const ItemDetailContainer = () => {
               {/* Contador */}
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <button
+                  <ButtonSecondary
                     onClick={decrement}
                     disabled={quantity <= 1}
-                    className="bg-gray-200 hover:bg-gray-300 disabled:bg-gray-100 disabled:cursor-not-allowed px-4 py-2 rounded-lg font-bold text-xl transition-colors"
+                    size="sm"
                   >
                     -
-                  </button>
+                  </ButtonSecondary>
 
                   <span className="text-xl font-semibold w-12 text-center">
                     {quantity}
                   </span>
 
-                  <button
+                  <ButtonSecondary
                     onClick={increment}
                     disabled={quantity >= product.stock}
-                    className="bg-gray-200 hover:bg-gray-300 disabled:bg-gray-100 disabled:cursor-not-allowed px-4 py-2 rounded-lg font-bold text-xl transition-colors"
+                    size="sm"
                   >
                     +
-                  </button>
+                  </ButtonSecondary>
                 </div>
 
-                <button
+                <ButtonPrimary
                   onClick={onAdd}
                   disabled={product.stock === 0}
-                  className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-bold py-3 px-6 rounded-lg text-lg transition-all transform hover:scale-105"
+                  size="lg"
+                  className="w-full"
                 >
                   {product.stock === 0 ? "Sin stock" : "Agregar al carrito"}
-                </button>
+                </ButtonPrimary>
               </div>
             </div>
           </div>

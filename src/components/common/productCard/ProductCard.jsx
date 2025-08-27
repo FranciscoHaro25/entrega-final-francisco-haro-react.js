@@ -1,33 +1,10 @@
 import { Link } from "react-router";
-import { useState } from "react";
+import { ButtonLink } from "../buttons/index";
 
 export const ProductCard = ({ product }) => {
-  const [isAdding, setIsAdding] = useState(false);
-
   const fallbackImage = `https://via.placeholder.com/400x300/f3f4f6/9ca3af?text=${encodeURIComponent(
     product.name.substring(0, 15)
   )}`;
-
-  const handleAddToCart = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    // Animación de feedback
-    setIsAdding(true);
-
-    // Simulamos agregar al carrito
-    setTimeout(() => {
-      // Aquí irá la lógica real del carrito en el futuro
-      console.log("Producto agregado:", product);
-      setIsAdding(false);
-
-      // Feedback visual temporal
-      const event = new CustomEvent("productAdded", {
-        detail: { product },
-      });
-      window.dispatchEvent(event);
-    }, 600);
-  };
 
   return (
     <div className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden h-full flex flex-col hover:-translate-y-1">
@@ -51,83 +28,43 @@ export const ProductCard = ({ product }) => {
         <div className="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
       </Link>
 
-      <div className="p-5 flex-1 flex flex-col space-y-3">
+      <div className="p-5 flex-1 flex flex-col justify-between">
         {/* Título clickeable */}
         <Link
           to={`/item/${product.id}`}
           className="hover:text-orange-600 transition-colors"
         >
-          <h3 className="text-lg font-semibold text-gray-900 mb-1 leading-tight overflow-hidden line-clamp-2">
+          <h3 className="text-lg font-semibold text-gray-900 mb-2 leading-tight line-clamp-2">
             {product.name}
           </h3>
         </Link>
 
-        <p className="text-gray-600 text-sm mb-3 flex-1 leading-relaxed overflow-hidden line-clamp-3">
-          {product.description}
-        </p>
-
-        <div className="flex flex-wrap gap-1.5 mb-3">
-          {product.categories?.slice(0, 2).map((category, index) => (
-            <span
-              key={index}
-              className="bg-orange-50 text-orange-700 px-2.5 py-1 rounded-md text-xs font-medium border border-orange-200"
-            >
-              {category}
-            </span>
-          ))}
-          {product.categories?.length > 2 && (
-            <span className="text-gray-500 text-xs px-1 py-1">
-              +{product.categories.length - 2}
+        {/* Solo mostrar la primera categoría */}
+        <div className="mb-3">
+          {product.categories?.[0] && (
+            <span className="bg-orange-50 text-orange-700 px-2.5 py-1 rounded-md text-xs font-medium border border-orange-200">
+              {product.categories[0]}
             </span>
           )}
         </div>
 
-        <div className="flex items-center justify-between mt-auto pt-2">
-          <div className="text-xl font-bold text-orange-600 bg-orange-50 px-3 py-2 rounded-md">
-            ${product.price.toFixed(2)}
+        {/* Precio y botón */}
+        <div className="space-y-3 mt-auto">
+          <div className="text-center">
+            <div className="text-2xl font-bold text-orange-600">
+              ${product.price.toFixed(2)}
+            </div>
           </div>
 
-          <button
-            onClick={handleAddToCart}
-            disabled={isAdding || product.stock === 0}
-            className={`
-              font-medium py-2.5 px-5 rounded-xl transition-all duration-300 
-              transform active:scale-95 shadow-lg hover:shadow-xl
-              ${
-                isAdding
-                  ? "bg-green-500 text-white"
-                  : product.stock === 0
-                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                  : "bg-orange-500 hover:bg-orange-600 text-white hover:scale-105"
-              }
-            `}
+          {/* Botón para ir al detalle */}
+          <ButtonLink
+            to={`/item/${product.id}`}
+            variant="primary"
+            size="md"
+            className="w-full text-center"
           >
-            {isAdding ? (
-              <span className="flex items-center gap-2">
-                <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    fill="none"
-                  />
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  />
-                </svg>
-                Agregando
-              </span>
-            ) : product.stock === 0 ? (
-              "Sin Stock"
-            ) : (
-              "Agregar"
-            )}
-          </button>
+            {product.stock === 0 ? "Sin Stock" : "Ver Detalle"}
+          </ButtonLink>
         </div>
       </div>
     </div>
