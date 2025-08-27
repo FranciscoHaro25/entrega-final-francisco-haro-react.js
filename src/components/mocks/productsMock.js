@@ -7,7 +7,7 @@ const productsMock = [
     price: 1299000,
     stock: 15,
     image:
-      "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop&crop=center",
     categories: ["electronics"],
   },
   {
@@ -18,7 +18,7 @@ const productsMock = [
     price: 2499000,
     stock: 8,
     image:
-      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&crop=center",
     categories: ["electronics"],
   },
   {
@@ -28,7 +28,7 @@ const productsMock = [
     price: 299000,
     stock: 25,
     image:
-      "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop&crop=center",
     categories: ["electronics"],
   },
   {
@@ -38,7 +38,7 @@ const productsMock = [
     price: 899000,
     stock: 12,
     image:
-      "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=400&h=300&fit=crop&crop=center",
     categories: ["electronics"],
   },
   {
@@ -49,7 +49,7 @@ const productsMock = [
     price: 189000,
     stock: 20,
     image:
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=300&fit=crop&crop=center",
     categories: ["deportes"],
   },
   {
@@ -59,7 +59,7 @@ const productsMock = [
     price: 450000,
     stock: 7,
     image:
-      "https://images.unsplash.com/photo-1544191696-15693072e0e5?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1502744688674-c619d1586c9e?w=400&h=300&fit=crop&crop=center",
     categories: ["deportes"],
   },
   {
@@ -69,7 +69,7 @@ const productsMock = [
     price: 35000,
     stock: 30,
     image:
-      "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=400&h=300&fit=crop&crop=center",
     categories: ["deportes"],
   },
   {
@@ -79,7 +79,7 @@ const productsMock = [
     price: 125000,
     stock: 15,
     image:
-      "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=400&h=300&fit=crop&crop=center",
     categories: ["deportes"],
   },
   {
@@ -89,7 +89,7 @@ const productsMock = [
     price: 89000,
     stock: 40,
     image:
-      "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&h=300&fit=crop&crop=center",
     categories: ["clothing"],
   },
   {
@@ -99,7 +99,7 @@ const productsMock = [
     price: 129000,
     stock: 25,
     image:
-      "https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=center",
     categories: ["clothing"],
   },
   {
@@ -110,7 +110,7 @@ const productsMock = [
     price: 95000,
     stock: 18,
     image:
-      "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=300&fit=crop&crop=center",
     categories: ["clothing"],
   },
   {
@@ -120,7 +120,7 @@ const productsMock = [
     price: 75000,
     stock: 22,
     image:
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400&h=300&fit=crop&crop=center",
     categories: ["clothing"],
   },
   {
@@ -172,7 +172,7 @@ const productsMock = [
     price: 85000,
     stock: 12,
     image:
-      "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=400&h=300&fit=crop&crop=center",
     categories: ["toys"],
   },
   {
@@ -182,7 +182,7 @@ const productsMock = [
     price: 28000,
     stock: 25,
     image:
-      "https://images.unsplash.com/photo-1566041510394-cf7c8fe21800?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1550399105-c4db5fb85c18?w=400&h=300&fit=crop&crop=center",
     categories: ["toys"],
   },
   {
@@ -193,7 +193,7 @@ const productsMock = [
     price: 65000,
     stock: 18,
     image:
-      "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?w=400&h=300&fit=crop&crop=center",
     categories: ["toys"],
   },
   {
@@ -203,7 +203,7 @@ const productsMock = [
     price: 22000,
     stock: 30,
     image:
-      "https://images.unsplash.com/photo-1594736797933-d0601ba2fe65?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=400&h=300&fit=crop&crop=center",
     categories: ["toys"],
   },
 ];
