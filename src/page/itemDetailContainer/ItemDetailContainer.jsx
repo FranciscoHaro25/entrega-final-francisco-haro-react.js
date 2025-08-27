@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router";
 import productsMock from "../../components/mocks/productsMock";
+import { useCart } from "../../context/CartContext";
 import {
   ButtonPrimary,
   ButtonSecondary,
@@ -10,6 +11,7 @@ import {
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { addToCart } = useCart();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
@@ -57,6 +59,9 @@ const ItemDetailContainer = () => {
     console.log(
       `Se agregaron ${quantity} unidades de ${product.name} al carrito`
     );
+
+    // Agregar al carrito usando el contexto
+    addToCart(product, quantity);
 
     // Mostrar estado de "agregando"
     setIsAdding(true);

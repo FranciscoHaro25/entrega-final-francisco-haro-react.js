@@ -12,6 +12,7 @@ export const Cart = () => {
     removeItem,
     getTotalPrice,
     getTotalItems,
+    clearCart,
   } = useCart();
 
   if (cartItems.length === 0) {
@@ -173,10 +174,18 @@ export const Cart = () => {
                 to="/"
                 variant="secondary"
                 size="md"
-                className="block w-full text-center"
+                className="block w-full text-center mb-3"
               >
                 Seguir comprando
               </ButtonLink>
+
+              <ButtonPrimary
+                onClick={clearCart}
+                size="sm"
+                className="w-full bg-red-500 hover:bg-red-600"
+              >
+                Vaciar carrito
+              </ButtonPrimary>
             </div>
           </div>
         </div>
