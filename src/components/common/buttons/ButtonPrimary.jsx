@@ -1,4 +1,3 @@
-// Botón Primario - Para acciones principales (comprar, agregar, confirmar)
 export const ButtonPrimary = ({
   children,
   onClick,

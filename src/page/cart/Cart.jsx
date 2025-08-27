@@ -1,4 +1,4 @@
-import { useCart } from "../../context/CartContext";
+import { useCart } from "../../hooks/useCart";
 import {
   ButtonLink,
   ButtonPrimary,
@@ -16,20 +16,17 @@ export const Cart = () => {
     clearCart,
   } = useCart();
 
-  // Manejar confirmación antes de vaciar carrito
   const handleClearCart = () => {
     if (window.confirm("¿Estás seguro de que quieres vaciar el carrito?")) {
       clearCart();
     }
   };
 
-  // Manejar cambio de cantidad
   const handleQuantityChange = (itemId, newQuantity) => {
-    if (newQuantity < 1) return; // No permitir cantidades menores a 1
+    if (newQuantity < 1) return;
     updateQuantity(itemId, newQuantity);
   };
 
-  // Manejar eliminación de producto
   const handleRemoveItem = (itemId, itemName) => {
     if (window.confirm(`¿Quieres eliminar "${itemName}" del carrito?`)) {
       removeItem(itemId);
@@ -80,7 +77,6 @@ export const Cart = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Lista de productos */}
           <div className="lg:col-span-2 space-y-4">
             {cartItems.map((item) => (
               <div
@@ -106,7 +102,6 @@ export const Cart = () => {
                     </p>
                   </div>
 
-                  {/* Controles de cantidad */}
                   <div className="flex items-center space-x-3">
                     <ButtonIcon
                       onClick={() =>
@@ -132,7 +127,6 @@ export const Cart = () => {
                     </ButtonIcon>
                   </div>
 
-                  {/* Botón eliminar */}
                   <ButtonIcon
                     onClick={() => handleRemoveItem(item.id, item.name)}
                     variant="danger"
@@ -155,7 +149,6 @@ export const Cart = () => {
                   </ButtonIcon>
                 </div>
 
-                {/* Subtotal del producto */}
                 <div className="mt-4 pt-4 border-t border-gray-200 text-right">
                   <span className="text-lg font-semibold text-gray-800">
                     Subtotal: $
@@ -166,7 +159,6 @@ export const Cart = () => {
             ))}
           </div>
 
-          {/* Resumen de compra */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-xl shadow-lg p-6 sticky top-24">
               <h2 className="text-2xl font-bold text-gray-800 mb-6">

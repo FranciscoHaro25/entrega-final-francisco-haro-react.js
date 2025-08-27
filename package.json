@@ -1,7 +1,9 @@
 {
-  "name": "mi-web",
+  "name": "fran-store",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Tienda online desarrollada con React y Vite",
+  "author": "Francisco Haro",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -28,9 +30,11 @@
     "tailwindcss": "^4.0.0",
     "vite": "^7.0.4"
   },
-  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
-  "main": "eslint.config.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "react",
+    "vite",
+    "ecommerce",
+    "tailwindcss"
+  ],
+  "license": "MIT"
 }

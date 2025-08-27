@@ -1,4 +1,3 @@
-// Botón Secundario - Para acciones secundarias (cancelar, volver, etc.)
 export const ButtonSecondary = ({
   children,
   onClick,

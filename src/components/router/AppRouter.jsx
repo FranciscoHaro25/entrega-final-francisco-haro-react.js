@@ -5,7 +5,7 @@ import ItemListContainer from "../../page/itemListContainer/ItemListContainer";
 import ItemDetailContainer from "../../page/itemDetailContainer/ItemDetailContainer";
 import { Cart } from "../../page/cart/Cart";
 import { NotFound } from "../../page/notFound/NotFound";
-import { CartProvider } from "../../context/CartContext";
+import { CartProvider } from "../../context/CartProvider";
 
 const AppRouter = () => {
   return (

@@ -8,7 +8,6 @@ export const ProductCard = ({ product }) => {
 
   return (
     <div className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden h-full flex flex-col hover:-translate-y-1">
-      {/* Imagen clickeable */}
       <Link
         to={`/item/${product.id}`}
         className="block relative overflow-hidden"
@@ -29,7 +28,6 @@ export const ProductCard = ({ product }) => {
       </Link>
 
       <div className="p-5 flex-1 flex flex-col justify-between">
-        {/* Título clickeable */}
         <Link
           to={`/item/${product.id}`}
           className="hover:text-orange-600 transition-colors"
@@ -39,7 +37,6 @@ export const ProductCard = ({ product }) => {
           </h3>
         </Link>
 
-        {/* Solo mostrar la primera categoría */}
         <div className="mb-3">
           {product.categories?.[0] && (
             <span className="bg-orange-50 text-orange-700 px-2.5 py-1 rounded-md text-xs font-medium border border-orange-200">
@@ -48,7 +45,6 @@ export const ProductCard = ({ product }) => {
           )}
         </div>
 
-        {/* Precio y botón */}
         <div className="space-y-3 mt-auto">
           <div className="text-center">
             <div className="text-2xl font-bold text-orange-600">
@@ -56,7 +52,6 @@ export const ProductCard = ({ product }) => {
             </div>
           </div>
 
-          {/* Botón para ir al detalle */}
           <ButtonLink
             to={`/item/${product.id}`}
             variant="primary"

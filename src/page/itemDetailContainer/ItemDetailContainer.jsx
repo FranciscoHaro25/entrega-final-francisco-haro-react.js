@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router";
 import productsMock from "../../components/mocks/productsMock";
-import { useCart } from "../../context/CartContext";
+import { useCart } from "../../hooks/useCart";
 import {
   ButtonPrimary,
   ButtonSecondary,
@@ -56,20 +56,15 @@ const ItemDetailContainer = () => {
   };
 
   const onAdd = () => {
-    // Validar stock disponible
     if (quantity > product.stock) {
       alert("No hay suficiente stock disponible");
       return;
     }
 
     try {
-      // Agregar al carrito usando el contexto
       addToCart(product, quantity);
-
-      // Mostrar estado de "agregando" para UX
       setIsAdding(true);
 
-      // Breve delay para mostrar feedback visual
       setTimeout(() => {
         navigate("/cart");
       }, 1000);
