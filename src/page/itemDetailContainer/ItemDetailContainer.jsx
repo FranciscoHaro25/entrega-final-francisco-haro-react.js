@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router";
-import productsMock from "../../components/mocks/productsMock";
 import { useCart } from "../../hooks/useCart";
 import {
   ButtonPrimary,
@@ -11,7 +10,7 @@ import {
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { addToCart } = useCart();
+  const { addToCart, getProductById } = useCart();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
@@ -20,18 +19,7 @@ const ItemDetailContainer = () => {
   useEffect(() => {
     setLoading(true);
 
-    const getProduct = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const foundProduct = productsMock.find((p) => p.id === parseInt(id));
-        if (foundProduct) {
-          resolve(foundProduct);
-        } else {
-          reject("Producto no encontrado");
-        }
-      }, 800);
-    });
-
-    getProduct
+    getProductById(id)
       .then((data) => {
         setProduct(data);
         setLoading(false);
@@ -41,7 +29,7 @@ const ItemDetailContainer = () => {
         setProduct(null);
         setLoading(false);
       });
-  }, [id]);
+  }, [id, getProductById]);
 
   const increment = () => {
     if (quantity < product.stock) {

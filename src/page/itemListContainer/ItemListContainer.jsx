@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import productsMock from "../../components/mocks/productsMock";
+import { useCart } from "../../hooks/useCart";
 import { ProductCard } from "../../components/common/productCard/ProductCard";
 import { ButtonLink } from "../../components/common/buttons/index";
 
@@ -8,6 +8,7 @@ const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const { categoryId } = useParams();
+  const { getProductsByCategory } = useCart();
 
   const categoryNames = {
     electronics: "Electrónica",
@@ -20,22 +21,7 @@ const ItemListContainer = () => {
   useEffect(() => {
     setLoading(true);
 
-    const getProducts = new Promise((resolve) => {
-      setTimeout(() => {
-        if (categoryId) {
-          const filteredProducts = productsMock.filter((product) =>
-            product.categories?.some(
-              (cat) => cat.toLowerCase() === categoryId.toLowerCase()
-            )
-          );
-          resolve(filteredProducts);
-        } else {
-          resolve(productsMock);
-        }
-      }, 600);
-    });
-
-    getProducts
+    getProductsByCategory(categoryId)
       .then((data) => {
         setProducts(data);
         setLoading(false);
@@ -44,7 +30,7 @@ const ItemListContainer = () => {
         console.error("Error al cargar productos:", error);
         setLoading(false);
       });
-  }, [categoryId]);
+  }, [categoryId, getProductsByCategory]);
 
   if (loading) {
     return (

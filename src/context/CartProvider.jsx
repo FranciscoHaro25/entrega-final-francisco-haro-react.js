@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import productsMock from "../components/mocks/productsMock";
 
 export const CartContext = createContext();
 
@@ -56,6 +57,41 @@ export const CartProvider = ({ children }) => {
     return cartItems.some((item) => item.id === productId);
   };
 
+  // Funciones para productos
+  const getAllProducts = () => {
+    return productsMock;
+  };
+
+  const getProductById = (id) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const foundProduct = productsMock.find((p) => p.id === parseInt(id));
+        if (foundProduct) {
+          resolve(foundProduct);
+        } else {
+          reject("Producto no encontrado");
+        }
+      }, 800);
+    });
+  };
+
+  const getProductsByCategory = (categoryId) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        if (!categoryId) {
+          resolve(productsMock);
+        } else {
+          const filteredProducts = productsMock.filter((product) =>
+            product.categories?.some(
+              (cat) => cat.toLowerCase() === categoryId.toLowerCase()
+            )
+          );
+          resolve(filteredProducts);
+        }
+      }, 600);
+    });
+  };
+
   const value = {
     cartItems,
     addToCart,
@@ -65,6 +101,9 @@ export const CartProvider = ({ children }) => {
     getTotalItems,
     clearCart,
     isInCart,
+    getAllProducts,
+    getProductById,
+    getProductsByCategory,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
