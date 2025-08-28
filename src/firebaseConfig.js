@@ -14,13 +14,18 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD7NJAIhzmAYcq0iog8tNmnh0fgbAQSEYI",
-  authDomain: "fran-store.firebaseapp.com",
-  projectId: "fran-store",
-  storageBucket: "fran-store.firebasestorage.app",
-  messagingSenderId: "75072040941",
-  appId: "1:75072040941:web:7b7e9540ea948769aac1e4",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
+
+// Validar que las variables estén configuradas
+if (!firebaseConfig.apiKey) {
+  throw new Error("Variables de entorno de Firebase no configuradas");
+}
 
 // Initialize Firebase
 const appBackend = initializeApp(firebaseConfig);
