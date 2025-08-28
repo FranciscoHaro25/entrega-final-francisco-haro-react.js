@@ -30,8 +30,14 @@ cd miWeb
 # Instalar dependencias
 npm install
 
-# Configurar Firebase
-# Crear archivo .env con las credenciales
+# Configurar variables de entorno
+# Crear archivo .env en la raíz del proyecto con:
+# VITE_FIREBASE_API_KEY=tu_api_key
+# VITE_FIREBASE_AUTH_DOMAIN=tu_proyecto.firebaseapp.com
+# VITE_FIREBASE_PROJECT_ID=tu_proyecto_id
+# VITE_FIREBASE_STORAGE_BUCKET=tu_proyecto.firebasestorage.app
+# VITE_FIREBASE_MESSAGING_SENDER_ID=tu_messaging_sender_id
+# VITE_FIREBASE_APP_ID=tu_app_id
 
 # Ejecutar en desarrollo
 npm run dev
@@ -39,6 +45,12 @@ npm run dev
 # Build para producción
 npm run build
 ```
+
+## 🔒 Seguridad
+
+- **Variables de entorno protegidas**: Las credenciales de Firebase se cargan desde `.env`
+- **Archivos ignorados**: El archivo `.env` está incluido en `.gitignore`
+- **Validación automática**: El sistema verifica que todas las variables estén configuradas
 
 ## 📱 Características del Proyecto
 
