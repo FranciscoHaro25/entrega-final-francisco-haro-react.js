@@ -1,12 +1,11 @@
-import { createContext, useState } from "react";
+import { useState } from "react";
+import { CartContext } from "./CartContext";
 import {
   getProductsFromFirestore,
   getProductById as getFirestoreProductById,
   getProductsByCategory as getFirestoreProductsByCategory,
   processOrderAndUpdateStock,
 } from "../firebaseConfig";
-
-export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);

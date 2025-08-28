@@ -27,7 +27,7 @@ const appBackend = initializeApp(firebaseConfig);
 
 export const db = getFirestore(appBackend);
 
-// Función para obtener todos los productos desde Firestore
+// Obtener productos de la base de datos
 export const getProductsFromFirestore = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, "products"));
@@ -118,7 +118,7 @@ export const createOrder = async (orderData) => {
 // Función para guardar datos del cliente
 export const saveCustomer = async (customerData) => {
   try {
-    // Buscar si el cliente ya existe por email
+    // Verificar si ya existe el cliente
     const q = query(
       collection(db, "clientes"),
       where("email", "==", customerData.email)
@@ -169,7 +169,7 @@ export const getOrderById = async (orderId) => {
   }
 };
 
-// Función para obtener todos los clientes
+// Obtener lista de clientes
 export const getCustomers = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, "clientes"));

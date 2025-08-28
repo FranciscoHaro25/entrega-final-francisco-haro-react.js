@@ -8,8 +8,7 @@ import {
 import { createOrder } from "../../firebaseConfig";
 
 export const CheckOut = () => {
-  const { cartItems, getTotalPrice, clearCart, completeOrderWithStock } =
-    useCart();
+  const { cartItems, getTotalPrice, completeOrderWithStock } = useCart();
   const navigate = useNavigate();
 
   // Estados del formulario
@@ -123,7 +122,7 @@ export const CheckOut = () => {
     setIsProcessing(true);
 
     try {
-      // Crear orden con todos los datos
+      // Procesar la orden
       const orderData = {
         cliente: customerData,
         productos: cartItems.map((item) => ({
