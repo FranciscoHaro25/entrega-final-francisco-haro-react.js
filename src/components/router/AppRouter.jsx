@@ -4,6 +4,8 @@ import { Footer } from "../layout/footer/Footer";
 import ItemListContainer from "../../page/itemListContainer/ItemListContainer";
 import ItemDetailContainer from "../../page/itemDetailContainer/ItemDetailContainer";
 import { Cart } from "../../page/cart/Cart";
+import { CheckOut } from "../../page/checkout/CheckOut";
+import OrderConfirmation from "../../page/orderConfirmation/OrderConfirmation";
 import { NotFound } from "../../page/notFound/NotFound";
 import { CartProvider } from "../../context/CartProvider";
 
@@ -22,6 +24,11 @@ const AppRouter = () => {
               />
               <Route path="/item/:id" element={<ItemDetailContainer />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<CheckOut />} />
+              <Route
+                path="/order-confirmation/:orderId"
+                element={<OrderConfirmation />}
+              />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

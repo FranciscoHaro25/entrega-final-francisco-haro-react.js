@@ -8,7 +8,7 @@ const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const { categoryId } = useParams();
-  const { getProductsByCategory } = useCart();
+  const { getProductsByCategory, stockRefresh } = useCart();
 
   const categoryNames = {
     electronics: "Electrónica",
@@ -30,7 +30,7 @@ const ItemListContainer = () => {
         console.error("Error al cargar productos:", error);
         setLoading(false);
       });
-  }, [categoryId, getProductsByCategory]);
+  }, [categoryId, getProductsByCategory, stockRefresh]);
 
   if (loading) {
     return (

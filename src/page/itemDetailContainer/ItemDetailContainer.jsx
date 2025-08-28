@@ -10,26 +10,28 @@ import {
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { addToCart, getProductById } = useCart();
+  const { addToCart, getProductById, stockRefresh } = useCart();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-
-    getProductById(id)
-      .then((data) => {
-        setProduct(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
+    const fetchProduct = async () => {
+      setLoading(true);
+      try {
+        const prod = await getProductById(id);
+        setProduct(prod);
+      } catch (error) {
+        console.error("Error al obtener el producto:", error);
         setProduct(null);
+      } finally {
         setLoading(false);
-      });
-  }, [id, getProductById]);
+      }
+    };
+
+    fetchProduct();
+  }, [id, getProductById, stockRefresh]); // Agregamos stockRefresh para actualizar cuando cambie el stock
 
   const increment = () => {
     if (quantity < product.stock) {
@@ -154,7 +156,11 @@ const ItemDetailContainer = () => {
               {/* Precio */}
               <div className="mb-8">
                 <div className="text-4xl font-bold text-orange-600">
-                  ${product.price.toFixed(2)}
+                  $
+                  {product.price.toLocaleString("es-EC", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
                 </div>
               </div>
 

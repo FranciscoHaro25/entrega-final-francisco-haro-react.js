@@ -48,7 +48,11 @@ export const ProductCard = ({ product }) => {
         <div className="space-y-3 mt-auto">
           <div className="text-center">
             <div className="text-2xl font-bold text-orange-600">
-              ${product.price.toFixed(2)}
+              $
+              {product.price.toLocaleString("es-EC", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
             </div>
           </div>
 

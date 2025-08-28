@@ -1,10 +1,16 @@
 import { createContext, useState } from "react";
-import productsMock from "../components/mocks/productsMock";
+import {
+  getProductsFromFirestore,
+  getProductById as getFirestoreProductById,
+  getProductsByCategory as getFirestoreProductsByCategory,
+  processOrderAndUpdateStock,
+} from "../firebaseConfig";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [stockRefresh, setStockRefresh] = useState(0); // Para forzar re-fetch de productos
 
   const addToCart = (product, quantity = 1) => {
     setCartItems((prevItems) => {
@@ -57,39 +63,60 @@ export const CartProvider = ({ children }) => {
     return cartItems.some((item) => item.id === productId);
   };
 
-  // Funciones para productos
-  const getAllProducts = () => {
-    return productsMock;
+  // Función para completar compra y actualizar stocks
+  const completeOrderWithStock = async () => {
+    try {
+      // Procesar actualización de stock
+      await processOrderAndUpdateStock(cartItems);
+
+      // Forzar refresh de productos
+      setStockRefresh((prev) => prev + 1);
+
+      // Limpiar carrito
+      clearCart();
+
+      return true;
+    } catch (error) {
+      console.error("Error al completar orden:", error);
+      return false;
+    }
   };
 
-  const getProductById = (id) => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const foundProduct = productsMock.find((p) => p.id === parseInt(id));
-        if (foundProduct) {
-          resolve(foundProduct);
-        } else {
-          reject("Producto no encontrado");
-        }
-      }, 800);
-    });
+  // Funciones para productos usando Firebase
+  const getAllProducts = async () => {
+    try {
+      return await getProductsFromFirestore();
+    } catch (error) {
+      console.error("Error al obtener productos:", error);
+      return [];
+    }
   };
 
-  const getProductsByCategory = (categoryId) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        if (!categoryId) {
-          resolve(productsMock);
-        } else {
-          const filteredProducts = productsMock.filter((product) =>
-            product.categories?.some(
-              (cat) => cat.toLowerCase() === categoryId.toLowerCase()
-            )
-          );
-          resolve(filteredProducts);
-        }
-      }, 600);
-    });
+  const getProductById = async (id) => {
+    try {
+      const product = await getFirestoreProductById(id);
+      if (product) {
+        return product;
+      } else {
+        throw new Error("Producto no encontrado");
+      }
+    } catch (error) {
+      console.error("Error al obtener producto:", error);
+      throw error;
+    }
+  };
+
+  const getProductsByCategory = async (categoryId) => {
+    try {
+      if (!categoryId) {
+        return await getProductsFromFirestore();
+      } else {
+        return await getFirestoreProductsByCategory(categoryId);
+      }
+    } catch (error) {
+      console.error("Error al obtener productos por categoría:", error);
+      return [];
+    }
   };
 
   const value = {
@@ -104,6 +131,8 @@ export const CartProvider = ({ children }) => {
     getAllProducts,
     getProductById,
     getProductsByCategory,
+    completeOrderWithStock,
+    stockRefresh, // Para que los componentes puedan detectar cambios
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
