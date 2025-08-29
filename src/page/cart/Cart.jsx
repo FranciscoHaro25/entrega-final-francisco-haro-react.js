@@ -87,10 +87,10 @@ export const Cart = () => {
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-20 h-20 object-cover rounded-lg"
+                    className="w-20 h-20 object-cover rounded-lg border border-gray-200"
                     onError={(e) => {
                       e.target.src =
-                        "https://via.placeholder.com/80x80?text=Producto";
+                        "https://via.placeholder.com/80x80/f97316/ffffff?text=🛒";
                     }}
                   />
                   <div className="flex-1">

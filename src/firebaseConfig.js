@@ -108,7 +108,6 @@ export const createOrder = async (orderData) => {
     };
 
     const docRef = await addDoc(collection(db, "orders"), order);
-    console.log("✅ Orden creada con ID:", docRef.id);
 
     // También guardar/actualizar datos del cliente
     await saveCustomer(orderData.cliente);
@@ -140,12 +139,10 @@ export const saveCustomer = async (customerData) => {
       };
 
       const docRef = await addDoc(collection(db, "clientes"), customer);
-      console.log("✅ Cliente creado con ID:", docRef.id);
       return docRef.id;
     } else {
       // Cliente existente - actualizar última compra
       // Por simplicidad, no actualizamos aquí, pero podrías implementar updateDoc
-      console.log("✅ Cliente existente encontrado");
       return querySnapshot.docs[0].id;
     }
   } catch (error) {
@@ -201,7 +198,6 @@ export const updateProductStock = async (productId, newStock) => {
     await updateDoc(productRef, {
       stock: newStock,
     });
-    console.log(`✅ Stock actualizado para producto ${productId}: ${newStock}`);
   } catch (error) {
     console.error("Error al actualizar stock:", error);
     throw error;
@@ -245,7 +241,6 @@ export const processOrderAndUpdateStock = async (cartItems) => {
       });
     }
 
-    console.log("✅ Stocks actualizados:", stockUpdates);
     return stockUpdates;
   } catch (error) {
     console.error("Error al procesar stocks:", error);
