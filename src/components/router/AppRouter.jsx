@@ -1,10 +1,10 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router";
 import { Navbar } from "../layout/navbar/Navbar";
 import { Footer } from "../layout/footer/Footer";
 import ItemListContainer from "../../page/itemListContainer/ItemListContainer";
 import ItemDetailContainer from "../../page/itemDetailContainer/ItemDetailContainer";
 import { Cart } from "../../page/cart/Cart";
-import { CheckOut } from "../../page/checkout/CheckOut";
+import CheckOut from "../../page/checkout/CheckOut";
 import OrderConfirmation from "../../page/orderConfirmation/OrderConfirmation";
 import { NotFound } from "../../page/notFound/NotFound";
 import { CartProvider } from "../../context/CartProvider";

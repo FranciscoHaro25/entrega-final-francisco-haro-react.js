@@ -121,18 +121,41 @@ src/
 │   ├── common/          # Componentes reutilizables
 │   │   ├── buttons/     # Sistema de botones
 │   │   ├── productCard/ # Tarjeta de producto
-│   │   └── cartWidget/  # Widget del carrito
-│   ├── layout/          # Header, Footer, Navbar
-│   └── mocks/           # Datos de prueba
+│   │   ├── cartWidget/  # Widget del carrito
+│   │   ├── itemCount/   # Selector de cantidad
+│   │   ├── itemList/    # Lista de productos (presentación)
+│   │   ├── itemDetail/  # Detalle de producto (presentación)
+│   │   ├── cartItem/    # Item del carrito (presentación)
+│   │   └── checkoutForm/ # Formulario de checkout
+│   └── layout/          # Header, Footer, Navbar
 ├── context/             # Proveedores de estado
-├── hooks/              # Custom hooks
-├── page/               # Componentes de página
-│   ├── cart/           # Página del carrito
-│   ├── checkout/       # Proceso de compra
-│   ├── itemDetail/     # Detalle de producto
-│   └── itemList/       # Lista de productos
-└── firebaseConfig.js   # Configuración de Firebase
+├── hooks/               # Custom hooks
+├── page/                # Componentes containers
+│   ├── cart/            # Página del carrito
+│   ├── checkout/        # Proceso de compra
+│   ├── itemDetailContainer/  # Container del detalle
+│   └── itemListContainer/    # Container de la lista
+└── firebaseConfig.js    # Configuración de Firebase
 ```
+
+## 🏗️ Patrón de Arquitectura
+
+Este proyecto sigue el patrón **Container/Presentational Components**:
+
+### **Containers (Lógica)**
+
+- `ItemListContainer`: Maneja el estado y lógica de la lista de productos
+- `ItemDetailContainer`: Gestiona el estado del producto individual
+- `Cart`: Controla la lógica del carrito de compras
+- `CheckOut`: Administra el proceso de compra
+
+### **Presentational (UI)**
+
+- `ItemList`: Muestra la lista de productos
+- `ItemDetail`: Renderiza el detalle del producto
+- `ItemCount`: Selector de cantidad con validaciones
+- `CartItem`: Representa un item en el carrito
+- `CheckoutForm`: Formulario de datos del cliente
 
 ## 🌟 Desarrollado por
 

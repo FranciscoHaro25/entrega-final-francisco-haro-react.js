@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useCart } from "../../hooks/useCart";
-import { ProductCard } from "../../components/common/productCard/ProductCard";
-import { ButtonLink } from "../../components/common/buttons/index";
+import { ItemList } from "../../components/common/itemList/ItemList";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
@@ -66,35 +65,7 @@ const ItemListContainer = () => {
               } disponible${products.length === 1 ? "" : "s"}`}
         </p>
 
-        {products.length === 0 ? (
-          <div className="text-center py-12">
-            <svg
-              className="w-24 h-24 text-gray-400 mx-auto mb-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
-              />
-            </svg>
-            <p className="text-xl text-gray-600 mb-4">
-              No encontramos productos en esta categoría
-            </p>
-            <ButtonLink to="/" variant="primary" size="md">
-              Ver todos los productos
-            </ButtonLink>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        )}
+        <ItemList products={products} />
       </div>
     </div>
   );
