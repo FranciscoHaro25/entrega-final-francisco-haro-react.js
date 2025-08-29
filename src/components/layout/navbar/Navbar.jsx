@@ -52,7 +52,7 @@ export const Navbar = () => {
                   : "text-gray-900 hover:text-primary transition-colors"
               }
             >
-              Deportes
+              Deportessss
             </NavLink>
 
             <NavLink
