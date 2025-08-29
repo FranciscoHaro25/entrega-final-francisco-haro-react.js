@@ -16,8 +16,8 @@ const OrderConfirmation = () => {
           const orderData = await getOrderById(orderId);
           setOrder(orderData);
         }
-      } catch (error) {
-        console.error("Error al cargar la orden:", error);
+      } catch {
+        // Error silencioso para producción
       } finally {
         setLoading(false);
       }

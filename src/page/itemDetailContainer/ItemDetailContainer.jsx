@@ -22,8 +22,7 @@ const ItemDetailContainer = () => {
       try {
         const prod = await getProductById(id);
         setProduct(prod);
-      } catch (error) {
-        console.error("Error al obtener el producto:", error);
+      } catch {
         setProduct(null);
       } finally {
         setLoading(false);
@@ -58,8 +57,7 @@ const ItemDetailContainer = () => {
       setTimeout(() => {
         navigate("/cart");
       }, 1000);
-    } catch (error) {
-      console.error("Error al agregar producto:", error);
+    } catch {
       alert("Hubo un problema al agregar el producto al carrito");
       setIsAdding(false);
     }

@@ -153,8 +153,7 @@ export const CheckOut = () => {
 
       // Ir a página de confirmación con el ID de la orden
       navigate(`/order-confirmation/${orderId}`);
-    } catch (error) {
-      console.error("Error al procesar la orden:", error);
+    } catch {
       alert(
         "Hubo un error al procesar tu orden. Por favor, intenta nuevamente."
       );

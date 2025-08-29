@@ -75,8 +75,7 @@ export const CartProvider = ({ children }) => {
       clearCart();
 
       return true;
-    } catch (error) {
-      console.error("Error al completar orden:", error);
+    } catch {
       return false;
     }
   };
@@ -85,8 +84,7 @@ export const CartProvider = ({ children }) => {
   const getAllProducts = async () => {
     try {
       return await getProductsFromFirestore();
-    } catch (error) {
-      console.error("Error al obtener productos:", error);
+    } catch {
       return [];
     }
   };
@@ -99,9 +97,8 @@ export const CartProvider = ({ children }) => {
       } else {
         throw new Error("Producto no encontrado");
       }
-    } catch (error) {
-      console.error("Error al obtener producto:", error);
-      throw error;
+    } catch {
+      throw new Error("Error al obtener producto");
     }
   };
 
@@ -112,8 +109,7 @@ export const CartProvider = ({ children }) => {
       } else {
         return await getFirestoreProductsByCategory(categoryId);
       }
-    } catch (error) {
-      console.error("Error al obtener productos por categoría:", error);
+    } catch {
       return [];
     }
   };

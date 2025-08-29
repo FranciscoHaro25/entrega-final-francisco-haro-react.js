@@ -26,8 +26,7 @@ const ItemListContainer = () => {
         setProducts(data);
         setLoading(false);
       })
-      .catch((error) => {
-        console.error("Error al cargar productos:", error);
+      .catch(() => {
         setLoading(false);
       });
   }, [categoryId, getProductsByCategory, stockRefresh]);
