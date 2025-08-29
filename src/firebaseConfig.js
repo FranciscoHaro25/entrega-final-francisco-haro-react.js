@@ -1,4 +1,4 @@
-// Import the functions you need from the SDKs you need
+// Configuración de Firebase
 import { initializeApp } from "firebase/app";
 import {
   getFirestore,
@@ -22,12 +22,14 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-// Validar que las variables estén configuradas
-if (!firebaseConfig.apiKey) {
-  throw new Error("Variables de entorno de Firebase no configuradas");
+// Validar configuración básica
+if (!firebaseConfig.apiKey || !firebaseConfig.projectId) {
+  console.error("❌ Error: Variables de entorno de Firebase no configuradas");
+  console.error("💡 Crea un archivo .env basado en .env.example");
+  throw new Error("Configuración de Firebase incompleta");
 }
 
-// Initialize Firebase
+// Inicializar Firebase
 const appBackend = initializeApp(firebaseConfig);
 
 export const db = getFirestore(appBackend);
@@ -100,7 +102,7 @@ export const getProductById = async (productId) => {
 // Función para crear una orden de compra
 export const createOrder = async (orderData) => {
   try {
-    // Agregar timestamp del servidor
+    // Agregar fecha del servidor
     const order = {
       ...orderData,
       fechaCreacion: serverTimestamp(),
@@ -109,7 +111,7 @@ export const createOrder = async (orderData) => {
 
     const docRef = await addDoc(collection(db, "orders"), order);
 
-    // También guardar/actualizar datos del cliente
+    // Guardar datos del cliente también
     await saveCustomer(orderData.cliente);
 
     return docRef.id;
@@ -119,7 +121,7 @@ export const createOrder = async (orderData) => {
   }
 };
 
-// Función para guardar datos del cliente
+// Guardar cliente en la base de datos
 export const saveCustomer = async (customerData) => {
   try {
     // Verificar si ya existe el cliente
@@ -130,7 +132,7 @@ export const saveCustomer = async (customerData) => {
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.empty) {
-      // Cliente nuevo - crear registro
+      // Cliente nuevo, crear registro
       const customer = {
         ...customerData,
         fechaRegistro: serverTimestamp(),
@@ -141,7 +143,7 @@ export const saveCustomer = async (customerData) => {
       const docRef = await addDoc(collection(db, "clientes"), customer);
       return docRef.id;
     } else {
-      // Cliente existente - actualizar última compra
+      // Cliente ya existe
       // Por simplicidad, no actualizamos aquí, pero podrías implementar updateDoc
       return querySnapshot.docs[0].id;
     }
@@ -151,7 +153,7 @@ export const saveCustomer = async (customerData) => {
   }
 };
 
-// Función para obtener una orden por ID
+// Buscar orden por ID
 export const getOrderById = async (orderId) => {
   try {
     const docRef = doc(db, "orders", orderId);
@@ -171,7 +173,7 @@ export const getOrderById = async (orderId) => {
   }
 };
 
-// Obtener lista de clientes
+// Obtener clientes registrados
 export const getCustomers = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, "clientes"));
@@ -191,7 +193,7 @@ export const getCustomers = async () => {
   }
 };
 
-// Función para actualizar el stock de un producto
+// Actualizar stock de un producto
 export const updateProductStock = async (productId, newStock) => {
   try {
     const productRef = doc(db, "products", productId);
@@ -204,7 +206,7 @@ export const updateProductStock = async (productId, newStock) => {
   }
 };
 
-// Función para reducir stock después de una compra
+// Reducir stock después de compra
 export const reduceProductStock = async (productId, quantityPurchased) => {
   try {
     // Obtener el producto actual
@@ -226,7 +228,7 @@ export const reduceProductStock = async (productId, quantityPurchased) => {
   }
 };
 
-// Función para procesar la compra y actualizar stocks
+// Procesar compra y actualizar inventario
 export const processOrderAndUpdateStock = async (cartItems) => {
   try {
     const stockUpdates = [];
