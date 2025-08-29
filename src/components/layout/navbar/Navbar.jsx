@@ -41,7 +41,7 @@ export const Navbar = () => {
                   : "text-gray-900 hover:text-primary transition-colors"
               }
             >
-              Electrónic
+              Electrónica
             </NavLink>
 
             <NavLink
